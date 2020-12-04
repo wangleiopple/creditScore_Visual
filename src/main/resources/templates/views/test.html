@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <title> 企业分布 </title>
+</head>
+<body>
+<section layout:fragment="content">
+    <script id="app-template" type="text/x-template">
+
+
+
+
+    </script>
+    <div class="inner">
+        <h3>企业分布</h3>
+        <hr>
+        <div id="app"></div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#app").html($("#app-template").html());
+            var app = new Vue({
+                el: "#app",
+                data: {
+
+
+                },
+                methods: {
+
+
+
+
+                    thisLoad(){
+                        let that=this;
+                        $.ajax({
+                            method:"get",
+                            url:"/data/enterpriseDistribution",
+                            success:function(response){
+                                console.log(response);
+                            }
+                        });
+                    }
+                },
+                mounted(){
+
+                },
+                created() {
+                    this.thisLoad();
+                }
+
+            });
+        });
+    </script>
+</section>
+</body>

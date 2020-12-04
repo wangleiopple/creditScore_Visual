@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml"
+>
+
+
+<head>
+    <title> 可视化 </title>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <script id="app-template" type="text/x-template">
+
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#app-template").useVue({
+                data: {
+                    options: {
+
+                        parseList: function (response) {
+                            var data = response.data;
+                            return {
+                                records: data.total
+                            }
+                        }
+                    }
+                },
+                methods: {
+                    filter: function () {
+
+                    },
+                    formatTime: function (row, column) {
+                        return row.startTime.replace('T', ' ');
+                    }
+                }
+            });
+        });
+
+    </script>
+</section>
+</body>

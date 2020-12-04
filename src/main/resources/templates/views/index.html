@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>ECharts test</title>
+    <!-- 引入 echarts.js -->
+    <script  th:src="@{/js/echarts.js}"  type="text/javascript"></script>
+    <script  th:src="@{/js/vue-2.5.16.js}"  type="text/javascript"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        grid:{
+            top:'10%',
+            right:'30%',
+            bottom:'60%',
+            left:'5%'
+        },
+        tooltip: {},
+        legend: {
+            data:['确诊人数']
+        },
+        xAxis: {
+            data: ["意大利","伊朗","西班牙","德国","瑞士","法国","美国","英国","韩国"]
+        },
+        yAxis: {},
+        series: [{
+            name: '确诊人数',
+            type: 'bar',
+            data: [74386, 27017, 49515, 37323, 10897, 25233,69223,9529,9241]
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
